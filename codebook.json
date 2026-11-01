@@ -1,0 +1,138 @@
+{
+  "codebookId": "cjk-book-review-topic-progression",
+  "version": "1.0",
+  "title": {
+    "en": "CJK book review topic progression codebook",
+    "ko": "한·중·일 북리뷰 화제 전개 코드북"
+  },
+  "_comment": "Edit this file to revise the codebook (v2 etc.). No code changes are needed. 'id' values are stored in coding data — keep them stable across versions, or add new ids instead of renaming. 'key' is an optional single-key shortcut (reserved keys: j k s t m f [ ] ? and arrow keys). Fill every 'TODO' definition.",
+
+  "progressionTypes": [
+    {
+      "id": "new",
+      "key": "1",
+      "label": { "ko": "신규도입", "en": "New introduction" },
+      "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." },
+      "example": { "ko": "", "en": "" }
+    },
+    {
+      "id": "maintain",
+      "key": "2",
+      "label": { "ko": "유지", "en": "Maintenance" },
+      "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." },
+      "example": { "ko": "", "en": "" }
+    },
+    {
+      "id": "linear",
+      "key": "3",
+      "label": { "ko": "선형", "en": "Linear" },
+      "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." },
+      "example": { "ko": "", "en": "" }
+    },
+    {
+      "id": "derived",
+      "key": "4",
+      "label": { "ko": "파생", "en": "Derived" },
+      "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." },
+      "example": { "ko": "", "en": "" }
+    },
+    {
+      "id": "reintro",
+      "key": "5",
+      "label": { "ko": "재도입", "en": "Re-introduction" },
+      "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." },
+      "example": { "ko": "", "en": "" }
+    },
+    {
+      "id": "synthesis",
+      "key": "6",
+      "label": { "ko": "종합", "en": "Synthesis" },
+      "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." },
+      "example": { "ko": "", "en": "" }
+    }
+  ],
+
+  "genreStages": [
+    {
+      "id": "intro",
+      "key": "q",
+      "label": { "ko": "소개", "en": "Introduction" },
+      "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." }
+    },
+    {
+      "id": "summary",
+      "key": "w",
+      "label": { "ko": "요약", "en": "Summary" },
+      "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." }
+    },
+    {
+      "id": "evaluation",
+      "key": "e",
+      "label": { "ko": "평가", "en": "Evaluation" },
+      "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." }
+    },
+    {
+      "id": "recommendation",
+      "key": "r",
+      "label": { "ko": "추천", "en": "Recommendation" },
+      "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." }
+    }
+  ],
+
+  "topicMarkers": {
+    "_comment": "Starter lists only — replace with the markers defined in your codebook. 'id' is what gets stored; an empty marker is coded as (none).",
+    "ko": [
+      { "id": "은/는", "label": "은/는" },
+      { "id": "이/가", "label": "이/가" },
+      { "id": "(이)란", "label": "(이)란" },
+      { "id": "에 대해(서)", "label": "에 대해(서)" },
+      { "id": "의 경우", "label": "의 경우" }
+    ],
+    "ja": [
+      { "id": "は", "label": "は" },
+      { "id": "が", "label": "が" },
+      { "id": "って", "label": "って" },
+      { "id": "というのは", "label": "というのは" },
+      { "id": "については", "label": "については" }
+    ],
+    "zh": [
+      { "id": "关于", "label": "关于" },
+      { "id": "至于", "label": "至于" },
+      { "id": "说到", "label": "说到" },
+      { "id": "对于", "label": "对于" },
+      { "id": "的话", "label": "的话" }
+    ]
+  },
+  "allowCustomMarkers": true,
+
+  "principles": [
+    {
+      "id": "P1",
+      "title": { "ko": "원칙 1", "en": "Principle 1" },
+      "text": { "ko": "TODO: 코딩 원칙 문구를 입력하세요.", "en": "TODO: add principle text." }
+    },
+    {
+      "id": "P2",
+      "title": { "ko": "원칙 2", "en": "Principle 2" },
+      "text": { "ko": "TODO: 코딩 원칙 문구를 입력하세요.", "en": "TODO: add principle text." }
+    },
+    {
+      "id": "P3",
+      "title": { "ko": "원칙 3", "en": "Principle 3" },
+      "text": { "ko": "TODO: 코딩 원칙 문구를 입력하세요.", "en": "TODO: add principle text." }
+    },
+    {
+      "id": "P4",
+      "title": { "ko": "원칙 4", "en": "Principle 4" },
+      "text": { "ko": "TODO: 코딩 원칙 문구를 입력하세요.", "en": "TODO: add principle text." }
+    }
+  ],
+
+  "segmentation": {
+    "_comment": "Sentence splitting rules per language. requireSpaceAfter: a terminator only ends a sentence if followed by whitespace or end of text. joiner: inserted when two sentences are merged.",
+    "splitOnNewline": true,
+    "ko": { "terminators": ".?!", "requireSpaceAfter": true, "joiner": " " },
+    "ja": { "terminators": "。！？", "requireSpaceAfter": false, "joiner": "" },
+    "zh": { "terminators": "。！？；", "requireSpaceAfter": false, "joiner": "" }
+  }
+}

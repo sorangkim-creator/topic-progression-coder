@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Topic Progression Coder — tests</title>
+<style>
+  body { font-family: ui-monospace, Menlo, Consolas, monospace; margin: 2rem; }
+  .ok { color: #1a7f37; } .fail { color: #cf222e; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<h1>Core tests (κ, CSV, segmentation, sampling)</h1>
+<div id="out"></div>
+<script src="../js/core.js"></script>
+<script src="tests.js"></script>
+<script>
+  var out = document.getElementById('out');
+  TPC_TESTS(TPC)(function (line, good) {
+    var d = document.createElement('div');
+    d.className = good ? 'ok' : 'fail';
+    d.textContent = line;
+    out.appendChild(d);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Topic Progression Coder</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <strong data-i18n="app.title">Topic Progression Coder</strong>
+    <span class="cb-version" id="cbVersion"></span>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-view="code" data-i18n="tab.code">Coding</button>
+    <button class="tab" data-view="double" data-i18n="tab.double">Double coding</button>
+    <button class="tab" data-view="data" data-i18n="tab.data">Data &amp; export</button>
+  </nav>
+  <div class="top-right">
+    <label class="coder">
+      <span data-i18n="coder.id">Coder ID</span>
+      <input id="coderId" type="text" maxlength="40" autocomplete="off" data-i18n-ph="coder.placeholder" placeholder="e.g. K01">
+    </label>
+    <div class="progress" id="progressWrap" title="">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <span id="progressText"></span>
+    </div>
+    <span class="save-state" id="saveState"></span>
+    <span class="principle-chip" id="principleChip" tabindex="0" data-i18n="principles.chip">Principles ⓘ</span>
+    <div class="lang-switch">
+      <button data-ui-lang="en">EN</button><button data-ui-lang="ko">한국어</button>
+    </div>
+  </div>
+</header>
+
+<div id="banner" class="banner hidden"></div>
+
+<!-- ============================ CODING VIEW ============================ -->
+<main id="view-code" class="view layout-code">
+  <aside class="sidebar">
+    <div class="filters">
+      <select id="filterLang">
+        <option value="" data-i18n="filter.allLangs">All languages</option>
+        <option value="ko">ko</option><option value="ja">ja</option><option value="zh">zh</option>
+      </select>
+      <select id="filterScope">
+        <option value="all" data-i18n="filter.all">All reviews</option>
+        <option value="sample" data-i18n="filter.sample">Sample only</option>
+        <option value="todo" data-i18n="filter.todo">Incomplete only</option>
+      </select>
+    </div>
+    <ul id="reviewList" class="review-list"></ul>
+  </aside>
+
+  <section class="center">
+    <div id="emptyState" class="empty hidden">
+      <p data-i18n="empty.noData">No reviews loaded yet.</p>
+      <p><button class="primary" data-goto="data" data-i18n="empty.goData">Upload a CSV</button></p>
+    </div>
+    <div id="reviewHeader" class="review-header"></div>
+    <ol id="sentenceList" class="sentence-list"></ol>
+  </section>
+
+  <aside class="side-panel">
+    <section>
+      <h3 data-i18n="principles.title">Coding principles</h3>
+      <ol id="principleList" class="principles"></ol>
+    </section>
+    <section>
+      <h3 data-i18n="defs.title">Definitions</h3>
+      <div id="defList" class="defs"></div>
+    </section>
+    <section>
+      <h3 data-i18n="keys.title">Shortcuts</h3>
+      <div id="keyHelp" class="keyhelp"></div>
+    </section>
+  </aside>
+</main>
+
+<!-- ========================= DOUBLE CODING VIEW ========================= -->
+<main id="view-double" class="view hidden page">
+  <section class="card">
+    <h2 data-i18n="sample.title">1. Draw the double-coding sample</h2>
+    <p class="hint" data-i18n="sample.hint">Reviews are sampled per language (stratified). The same seed always gives the same sample.</p>
+    <div class="row">
+      <label><span data-i18n="sample.seed">Seed</span> <input id="sampleSeed" type="text" value="20261101" size="12"></label>
+      <label><span data-i18n="sample.rate">Rate (%)</span> <input id="sampleRate" type="number" min="1" max="100" value="20" class="narrow"></label>
+      <button id="btnDrawSample" class="primary" data-i18n="sample.draw">Draw sample</button>
+      <button id="btnExportPackage" data-i18n="sample.package">Export package for 2nd coder</button>
+    </div>
+    <div id="sampleResult"></div>
+  </section>
+
+  <section class="card">
+    <h2 data-i18n="rel.title">2. Compare two coders</h2>
+    <p class="hint" data-i18n="rel.hint">Load the JSON exported by each coder. Sentences are matched by review ID and sentence number; segmentation must be identical.</p>
+    <div class="row">
+      <label class="file"><span data-i18n="rel.coderA">Coder A JSON</span> <input type="file" id="fileA" accept=".json,application/json"></label>
+      <button id="btnUseCurrentA" data-i18n="rel.useCurrent">Use current project as A</button>
+      <label class="file"><span data-i18n="rel.coderB">Coder B JSON</span> <input type="file" id="fileB" accept=".json,application/json"></label>
+    </div>
+    <div class="row">
+      <label><input type="checkbox" id="relSampleOnly" checked> <span data-i18n="rel.sampleOnly">Restrict to A's sample (if any)</span></label>
+      <label><span data-i18n="rel.lang">Language</span>
+        <select id="relLang"><option value="" data-i18n="filter.allLangs">All languages</option><option>ko</option><option>ja</option><option>zh</option></select>
+      </label>
+      <button id="btnCompute" class="primary" data-i18n="rel.compute">Compute agreement</button>
+    </div>
+    <div id="relStatus" class="hint"></div>
+    <div id="relResults"></div>
+  </section>
+
+  <section class="card">
+    <h2 data-i18n="cons.title">3. Disagreements &amp; consensus</h2>
+    <p class="hint" data-i18n="cons.hint">Consensus decisions are stored separately from each coder's data (browser storage) and can be exported.</p>
+    <div class="row">
+      <label><input type="checkbox" id="consUnresolved"> <span data-i18n="cons.unresolvedOnly">Unresolved only</span></label>
+      <button id="btnConsJSON" data-i18n="cons.exportJSON">Export consensus JSON</button>
+      <button id="btnConsCSV" data-i18n="cons.exportCSV">Export consensus CSV</button>
+      <label class="file"><span data-i18n="cons.import">Import consensus JSON</span> <input type="file" id="fileCons" accept=".json,application/json"></label>
+      <button id="btnConsClear" class="danger" data-i18n="cons.clear">Clear consensus</button>
+    </div>
+    <div id="consList"></div>
+  </section>
+</main>
+
+<!-- ============================== DATA VIEW ============================== -->
+<main id="view-data" class="view hidden page">
+  <section class="card notice">
+    <strong data-i18n="privacy.title">Privacy</strong>
+    <span data-i18n="privacy.text">All data stays in this browser. Nothing is uploaded or sent anywhere; files are read locally and saved only to this browser's storage.</span>
+  </section>
+
+  <section class="card">
+    <h2 data-i18n="data.csvTitle">Import reviews (CSV)</h2>
+    <p class="hint" data-i18n="data.csvHint">Columns: review_id, lang (ko/ja/zh), text. UTF-8. Sentences are split automatically and can be merged/split in the coding view.</p>
+    <div class="row">
+      <input type="file" id="fileCSV" accept=".csv,text/csv">
+      <button id="btnSample" data-i18n="data.loadSample">Load sample CSV</button>
+    </div>
+    <div id="csvReport" class="hint"></div>
+  </section>
+
+  <section class="card">
+    <h2 data-i18n="data.projectTitle">Project (JSON)</h2>
+    <p class="hint" data-i18n="data.projectHint">Work is auto-saved in this browser. Export JSON regularly as a backup and to share with the reliability check.</p>
+    <div class="row">
+      <button id="btnExportJSON" class="primary" data-i18n="data.exportJSON">Export JSON</button>
+      <label class="file"><span data-i18n="data.importJSON">Import JSON</span> <input type="file" id="fileJSON" accept=".json,application/json"></label>
+      <button id="btnReset" class="danger" data-i18n="data.reset">Clear project</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 data-i18n="data.csvOutTitle">Export coded data (CSV)</h2>
+    <p class="hint" data-i18n="data.csvOutHint">One row per sentence, UTF-8 with BOM so Excel shows Korean/Japanese/Chinese correctly.</p>
+    <button id="btnExportCSV" class="primary" data-i18n="data.exportCSV">Export CSV</button>
+  </section>
+
+  <section class="card">
+    <h2 data-i18n="data.cbTitle">Codebook</h2>
+    <p class="hint" data-i18n="data.cbHint">Loaded from codebook.json. When opened as a local file (file://), browsers block that request — load the file here instead.</p>
+    <div id="cbStatus"></div>
+    <div class="row">
+      <label class="file"><span data-i18n="data.cbLoad">Load codebook.json</span> <input type="file" id="fileCB" accept=".json,application/json"></label>
+      <button id="btnCBReload" data-i18n="data.cbReload">Reload from server</button>
+    </div>
+  </section>
+</main>
+
+<div id="toast" class="toast hidden" role="status"></div>
+
+<script src="js/core.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
