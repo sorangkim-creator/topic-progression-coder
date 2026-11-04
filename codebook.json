@@ -3,7 +3,9 @@
   "version": "1.0",
   "title": {
     "en": "CJK book review topic progression codebook",
-    "ko": "한·중·일 북리뷰 화제 전개 코드북"
+    "ko": "한·중·일 북리뷰 화제 전개 코드북",
+    "ja": "日中韓ブックレビュー話題展開コードブック",
+    "zh": "中日韩书评话题推进编码手册"
   },
   "_comment": "Edit this file to revise the codebook (v2 etc.). No code changes are needed. 'id' values are stored in coding data — keep them stable across versions, or add new ids instead of renaming. 'key' is an optional single-key shortcut (reserved keys: j k s t m f [ ] ? and arrow keys). Fill every 'TODO' definition.",
 
@@ -11,42 +13,42 @@
     {
       "id": "new",
       "key": "1",
-      "label": { "ko": "신규도입", "en": "New introduction" },
+      "label": { "ko": "신규도입", "en": "New introduction", "ja": "新規導入", "zh": "新引入" },
       "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." },
       "example": { "ko": "", "en": "" }
     },
     {
       "id": "maintain",
       "key": "2",
-      "label": { "ko": "유지", "en": "Maintenance" },
+      "label": { "ko": "유지", "en": "Maintenance", "ja": "維持", "zh": "延续" },
       "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." },
       "example": { "ko": "", "en": "" }
     },
     {
       "id": "linear",
       "key": "3",
-      "label": { "ko": "선형", "en": "Linear" },
+      "label": { "ko": "선형", "en": "Linear", "ja": "線形", "zh": "线性" },
       "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." },
       "example": { "ko": "", "en": "" }
     },
     {
       "id": "derived",
       "key": "4",
-      "label": { "ko": "파생", "en": "Derived" },
+      "label": { "ko": "파생", "en": "Derived", "ja": "派生", "zh": "派生" },
       "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." },
       "example": { "ko": "", "en": "" }
     },
     {
       "id": "reintro",
       "key": "5",
-      "label": { "ko": "재도입", "en": "Re-introduction" },
+      "label": { "ko": "재도입", "en": "Re-introduction", "ja": "再導入", "zh": "重新引入" },
       "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." },
       "example": { "ko": "", "en": "" }
     },
     {
       "id": "synthesis",
       "key": "6",
-      "label": { "ko": "종합", "en": "Synthesis" },
+      "label": { "ko": "종합", "en": "Synthesis", "ja": "総合", "zh": "综合" },
       "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." },
       "example": { "ko": "", "en": "" }
     }
@@ -56,25 +58,25 @@
     {
       "id": "intro",
       "key": "q",
-      "label": { "ko": "소개", "en": "Introduction" },
+      "label": { "ko": "소개", "en": "Introduction", "ja": "紹介", "zh": "介绍" },
       "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." }
     },
     {
       "id": "summary",
       "key": "w",
-      "label": { "ko": "요약", "en": "Summary" },
+      "label": { "ko": "요약", "en": "Summary", "ja": "要約", "zh": "概述" },
       "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." }
     },
     {
       "id": "evaluation",
       "key": "e",
-      "label": { "ko": "평가", "en": "Evaluation" },
+      "label": { "ko": "평가·감상", "en": "Evaluation/Response", "ja": "評価・感想", "zh": "评价·感想" },
       "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." }
     },
     {
       "id": "recommendation",
       "key": "r",
-      "label": { "ko": "추천", "en": "Recommendation" },
+      "label": { "ko": "추천", "en": "Recommendation", "ja": "推薦", "zh": "推荐" },
       "definition": { "ko": "TODO: 정의를 입력하세요.", "en": "TODO: add definition." }
     }
   ],
@@ -108,22 +110,22 @@
   "principles": [
     {
       "id": "P1",
-      "title": { "ko": "원칙 1", "en": "Principle 1" },
+      "title": { "ko": "원칙 1", "en": "Principle 1", "ja": "原則1", "zh": "原则1" },
       "text": { "ko": "TODO: 코딩 원칙 문구를 입력하세요.", "en": "TODO: add principle text." }
     },
     {
       "id": "P2",
-      "title": { "ko": "원칙 2", "en": "Principle 2" },
+      "title": { "ko": "원칙 2", "en": "Principle 2", "ja": "原則2", "zh": "原则2" },
       "text": { "ko": "TODO: 코딩 원칙 문구를 입력하세요.", "en": "TODO: add principle text." }
     },
     {
       "id": "P3",
-      "title": { "ko": "원칙 3", "en": "Principle 3" },
+      "title": { "ko": "원칙 3", "en": "Principle 3", "ja": "原則3", "zh": "原则3" },
       "text": { "ko": "TODO: 코딩 원칙 문구를 입력하세요.", "en": "TODO: add principle text." }
     },
     {
       "id": "P4",
-      "title": { "ko": "원칙 4", "en": "Principle 4" },
+      "title": { "ko": "원칙 4", "en": "Principle 4", "ja": "原則4", "zh": "原则4" },
       "text": { "ko": "TODO: 코딩 원칙 문구를 입력하세요.", "en": "TODO: add principle text." }
     }
   ],
